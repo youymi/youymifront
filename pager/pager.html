@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+    <title>youymi pager component</title>
+    <link rel="stylesheet" href="pager.css">
+    <script src="pager.js"></script>
+     <script src="../commonjs/commonjs.js"></script>
+</head>
+
+<body>
+
+  <div>
+            <h3> test </h3>
+            <div id="testpage"></div>
+    </div>
+
+
+    <div id="pager" class="youymi-pager g-clearfix">
+        <ul class="">
+            <li class="item prev prev-disabled"><span class="num">&laquo; 上一页</span></li>
+            <li class="item active"><span>1</span></li>
+             <li class="item dot"><span>...</span></li>
+            <li class="item"><a href="#" class="num">2</a></li>
+            <li class="item"><a href="#" class="num">3</a></li>
+            <li class="item next"><a href="#" class="num">下一页 &raquo;</a></li>
+
+        </ul>
+        <div class="total">
+            共 2 页，
+        </div>
+        <div class="form">
+            <span class="text">到第</span>
+            <input class="input J_Input" value="2" min="1" max="2" aria-label="页码输入框" type="number">
+            <span class="text">页</span>
+            <span class="btn J_Submit" role="button" tabindex="0">确定</span>
+        </div>
+    </div>
+
+    <div id="tt">
+            <ul>
+            <li class="item prev prev-disabled"></li>
+            <li class="item prev prev-disabled">
+                <p class="item"></p>
+            </li>
+             </ul>
+             <p class="item"></p>
+     </div>   
+
+
+<script type="text/javascript">
+    var page = youymi.pager.newpage({
+    totalRecord : 82,
+    currentPage : 6,
+    domid : "testpage"
+});
+
+var js=document.scripts;
+var jsPath;
+for(var i=0;i<js.length;i++){
+ if(js[i].src.indexOf("pager.js")>-1){
+   jsPath=js[i].src.substring(0,js[i].src.lastIndexOf("/")+1);
+   break;
+ }
+}
+//alert(jsPath.substring(0,jsPath.indexOf("/",8)));
+
+//alert(getElementsByClassName("youymi-pager","div").length);
+//
+
+alert(findElementsByClassName(document.getElementById("tt"),"item").length)
+//alert(page.getPageCount());
+</script>
+
+</body>

@@ -1,0 +1,167 @@
+blockquote, body, button, dd, dl, dt, fieldset, form, h1, h2, h3, h4, h5, h6, hr, input, legend, li, ol, p, pre, td, textarea, th, ul {
+    margin: 0;
+    padding: 0
+}
+body, button, input, select, textarea {
+    font: 12px/1.5 tahoma, arial, 'Hiragino Sans GB', \5b8b\4f53, sans-serif
+}
+h1, h2, h3, h4, h5, h6 {
+    font-size: 100%
+}
+address, cite, dfn, em, var {
+    font-style: normal
+}
+code, kbd, pre, samp {
+    font-family: courier new, courier, monospace
+}
+small {
+    font-size: 12px
+}
+ol, ul {
+    list-style: none
+}
+a {
+    text-decoration: none
+}
+a:hover {
+    text-decoration: underline
+}
+sup {
+    vertical-align: text-top
+}
+sub {
+    vertical-align: text-bottom
+}
+legend {
+    color: #000
+}
+fieldset, img {
+    border: 0
+}
+button, input, select, textarea {
+    font-size: 100%
+}
+table {
+    border-collapse: collapse;
+    border-spacing: 0
+}
+/**
+youymi pager css
+*/
+
+.youymi-pager {
+  
+    margin: 1px;
+}
+.youymi-pager  ul {
+    float: left;
+}
+.youymi-pager .item {
+    position: relative;
+    float: left;
+    margin-left: -1px;
+    min-width: 35px;
+    border: 1px solid #EDEDED;
+    height: 35px;
+    color: #3E3E3E;
+    text-align: center;
+    line-height: 35px;
+    cursor: pointer;
+    transition: all 0.1s linear 0s;
+}
+.youymi-pager .item:hover{z-index:1;border-color:#f40}
+.youymi-pager .item .num{position:relative;z-index:1;display:inline-block;width:100%;text-decoration:none;font-size:14px}
+ 
+
+.youymi-pager .prev {
+    margin-right: 6px;
+    margin-left: 0px;
+}
+
+.youymi-pager .prev, .youymi-pager .next {
+    width: 75px;
+    font-weight: 400;
+}
+.youymi-pager  .prev-disabled, .youymi-pager  .next-disabled {
+    color: #CCC;
+    cursor: not-allowed;
+}
+
+.youymi-pager .dot{border:none;line-height:37px;width:24px;cursor:default}
+.youymi-pager .dot:hover{color:#3e3e3e}
+
+.youymi-pager .prev-disabled:hover,.youymi-pager .next-disabled:hover{border-color:#ededed}
+
+.youymi-pager  .active, .youymi-pager  .active:hover{
+position: relative;
+z-index: 1;
+background: none repeat scroll 0% 0% #F40;
+color: #FFF;
+border-color: #F40;
+cursor: default;
+text-decoration: none;
+}
+
+.youymi-pager  a{color:#3d3d3d;text-decoration:none}
+.youymi-pager a:hover, .youymi-pager a:focus{text-decoration:underline;color:#f40}
+
+
+.youymi-pager .next {
+    margin-right: 0px;
+    margin-left: 6px;
+}
+
+.youymi-pager .text, .youymi-pager .input, .youymi-pager .total {
+    color: #999;
+}
+.youymi-pager .total {
+    margin-left: 10px;
+}
+.youymi-pager .total, .youymi-pager .text {
+    float: left;
+    line-height: 37px;
+}
+
+.youymi-pager .form {
+    float: left;
+}
+
+.youymi-pager .text, .youymi-pager .input, .youymi-pager .btn {
+    margin-left: 5px;
+}
+.youymi-pager .total, .youymi-pager .text {
+    float: left;
+    line-height: 37px;
+}
+
+.youymi-pager .input {
+    width: 35px;
+    border: 1px solid #EDEDED;
+    height: 21px;
+    text-align: center;
+}
+.youymi-pager .input, .youymi-pager .btn {
+    margin-top: 7px;
+    float: left;
+}
+.youymi-pager .btn {
+    height: 21px;
+    width: 43px;
+    border-radius: 2px;
+    background-clip: padding-box;
+    border: 1px solid #EDEDED;
+    text-align: center;
+    line-height: 21px;
+    cursor: pointer;
+}
+
+ 
+.youymi-pager .btn:hover{color:#f40;border-color:#f40}
+
+.g-clearfix:after {
+    clear: both;
+}
+.g-clearfix:before, .g-clearfix:after {
+    content: "";
+    display: table;
+}
