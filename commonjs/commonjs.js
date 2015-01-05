@@ -36,3 +36,13 @@ function findElementsByClassName(parentObj,className) {
     	return ele;
  
 }
+
+
+ function setSelectedItemByValue(objSelect, value) {  
+        for(var i=0;i<objSelect.options.length;i++) {  
+            if(objSelect.options[i].value == value) {  
+                objSelect.options[i].selected = true;  
+                break;  
+            }  
+        }  
+    }  
