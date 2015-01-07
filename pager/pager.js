@@ -7,6 +7,10 @@ youymi.pager = {
 			totalRecord: pager1.totalRecord,
 			pageDisplayCount: pager1.pageDisplayCount || 5,
 			domid: pager1.domid,
+			onitemclick: pager1.onitemclick || function(pageIndex, data){ 
+				//alert(pageIndex); 
+				return true;},
+			queryDataCallback: pager1.queryDataCallback || function(){return null},
 			getPageCount: function(){
 				if  (this.totalRecord > 0) {
 					return Math.ceil(this.totalRecord/ this.pageSize);
@@ -14,9 +18,21 @@ youymi.pager = {
 				return 0;
 			},
 			bindEvent: function(obj){
+				var that = this;
 				var itemclick = function(){
-					if (this.getAttribute("page")) {
-						alert(this.getAttribute("page"));
+					// if (this.getAttribute("page")) {
+					// 	alert(this.getAttribute("page"));
+					// }
+					var pageIndex = this.getAttribute("page");
+					if  (pageIndex) {
+						pageIndex = parseInt(pageIndex);
+						var isContinue = that.onitemclick(pageIndex, that.queryDataCallback());
+						if (isContinue) {
+							that.currentPage =  pageIndex;
+							that.init();
+						}
+					} else {
+						alert("do not click");
 					}
 					
 				};
@@ -39,10 +55,10 @@ youymi.pager = {
 				if (this.currentPage == 1) {
 					html.push('<li class="item prev prev-disabled"><span class="num ">&laquo; 上一页</span></li>');
 				} else{
-					html.push('<li class="item prev "><a class="num">&laquo; 上一页</a></li>');
+					html.push('<li class="item prev " page="'  + (this.currentPage -1)  +'"><a class="num">&laquo; 上一页</a></li>');
 				}
 
-				if (count > this.pageDisplayCount &&  (this.currentPage  + increase - this.pageDisplayCount) >=1)  {
+				if ( count > this.pageDisplayCount &&  (this.currentPage  + increase - this.pageDisplayCount) >=1)  {
 					html.push('<li class="item" page="1"><a class="num">1</a></li>');
 				}
 
@@ -50,7 +66,7 @@ youymi.pager = {
 					html.push('<li class="item" page="2"><a class="num">2</a></li>');
 				}
 
-				if ((count - this.pageDisplayCount) >=3 &&  (this.currentPage  + increase - this.pageDisplayCount) >=3)  {
+				if (this.currentPage > this.pageDisplayCount && (count - this.pageDisplayCount) >=3 &&  (this.currentPage  + increase - this.pageDisplayCount) >=3)  {
 					html.push('<li class="item dot"><span>...</span></li>');
 				}
 
@@ -59,6 +75,9 @@ youymi.pager = {
 				var end =1;
 				 if ( (this.currentPage + increase) <=  count ) {
 				 	end =  this.currentPage + increase;
+				 	if (end  < this.pageDisplayCount && this.pageDisplayCount <=  count)  {
+				 		end = this.pageDisplayCount;
+				 	}
 				 } else {
 				 	end = count;
 				 }
@@ -84,12 +103,22 @@ youymi.pager = {
 				if (this.currentPage == count) {
 					html.push('<li class="item next next-disabled"><span class="num">&laquo; 下一页</span></li>');
 				} else{
-					html.push('<li class="item next "><a class="num">&laquo; 下一页</a></li>');
+					html.push('<li class="item next "  page="'  + (this.currentPage +1)  +'"><a class="num">&laquo; 下一页</a></li>');
 				}
 
 
 				 html.push('  </ul>     <div class="total">     共' +count + '页，   </div>       <div class="form">');
 
+				 html.push(' <span class="text">到第</span>');
+		
+				 var nextpage = this.currentPage;
+				 if (this.currentPage < count) {
+				 	nextpage = this.currentPage + 1;
+				 }
+				 html.push('  <input class="input J_Input" value="'+nextpage+'" min="1" max="'+ count+'" aria-label="页码输入框" type="number">');
+				 html.push('<span class="text">页</span>');
+				 html.push(' <span class="btn j-next-submit" role="button" tabindex="0">确定</span>');
+				 html.push('');
 
 				html.push('  </div>  </div>');
 
