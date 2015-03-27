@@ -8,7 +8,7 @@ jdk invironment setting
 ln -s /opt/profile.d/jdk.sh /etc/profile.d/jdk.sh
 
 
-mysql install  immigration
+mysql install  immigration for binary 
 
 1.  create symbol link  /usr/local/mysql to /opt/dev/mariadb
  ln -s /opt/dev/mariadb-5.5.38-linux-x86_64/ /usr/local/mysql
@@ -19,6 +19,10 @@ useradd -g mysql mysql
 cd  /usr/local/mysql
 chown -R root .
 chown -R mysql data
+
+for rpms
+needs  yum install perl-DBI
+
 
 
  3. cp  mysql  shell to /etc/init.d  for  start and shutdown server

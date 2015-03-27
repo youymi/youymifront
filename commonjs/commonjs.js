@@ -72,3 +72,9 @@ function HTMLDeCode(str) {
     s = s.replace(/ <br>/g, "\n");
     return s;
 }
+
+function createNodes(html) {
+    var obj = document.createElement("div"); 
+　　 obj.innerHTML = html; 
+　　 return obj.childNodes; 
+}
